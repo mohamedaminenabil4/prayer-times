@@ -24,86 +24,68 @@
 
     <div class="search-bar">
         <form action="getter.php" method="post">
-            <input list="cities" name="city" id="city-search" placeholder="Tapez une ville...">
-            <datalist id="cities">
-                <option value="Casablanca">
-                <option value="Agadir">
-                <option value="Fès">
-                <option value="Marrakech">
-                <option value="Meknès">
-                <option value="Rabat">
-                <option value="Salé">
-                <option value="Mohammedia">
-                <option value="Kénitra">
-                <option value="Tétouan">
-                <option value="Eljadida">
-                <option value="Safi">
-                <option value="Benimellal">
-                <option value="Ksarelkebir">
-                <option value="Nador">
-                <option value="Larache">
-                <option value="Ouarzazate">
-                <option value="Essaouira">
-                <option value="Taroudant">
-                <option value="Dakhla">
-                <option value="Tanger">
-                <option value="Assilah">
-                <option value="Ifrane">
-                <option value="Berkane">
-                <option value="Settat">
-                <option value="Sidikacem">
-                <option value="Taza">
-                <option value="Khouribga">
-                <option value="Sidiifni">
-                <option value="Midelt">
-                <option value="Errachidia">
-                <option value="Oualidia">
-                <option value="Tiznit">
-                <option value="Rissani">
-                <option value="Khemisset">
-                <option value="Guercif">
-                <option value="Taounate">
-                <option value="Azilal">
-                <option value="Alhoceima">
-                <option value="Elaioun">
-                <option value="Nador">
-                <option value="Figuig">
-                <option value="Tiznit">
-                <option value="Guelmim">
-                <option value="Laâyoune">
-                <option value="Boujdour">
-                <option value="Tantan">
-                <option value="Dakhla">
-            </datalist>
+            <select id="country-search" required>
+                <option value="">Veillez choisir un pay</option>
+            </select>
+            <select id="city-search" required>
+                <option value="">Veillez choisir une ville</option>
+            </select>
+
             <button type="button" onclick="fetchPrayerTimes()">Changer</button>
         </form>
     </div>
+
 
     <section class="cards">
         <div class="card">
             <h3>Fajr</h3>
             <p id="fajr">chargement...</p>
             <p id="fajr-arabic">الفجر</p> 
+            <div class="icon">
+                <svg id="icon-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" color="red">
+                    <path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" fill="currentColor"/>
+                </svg>
+            </div>
         </div>
         <div class="card">
             <h3>Dhuhr</h3>
             <p id="dhuhr">chargement...</p>
             <p id="dhuhr-arabic">الظهر</p> 
+            <div class="icon">
+                <svg id="icon-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" color="red">
+                    <path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" fill="currentColor"/>
+                </svg>
+            </div>
         </div>
         <div class="card">
             <h3>Asr</h3>
             <p id="asr">chargement...</p>
             <p id="asr-arabic">العصر</p>
+            <div class="icon">
+                <svg id="icon-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" color="red">
+                    <path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" fill="currentColor"/>
+                </svg>
+            </div>
         </div>
         <div class="card">
             <h3>Maghrib</h3>
             <p id="maghrib">chargement...</p>
             <p id="maghrib-arabic">المغرب</p>
+            <div class="icon">
+                <svg id="icon-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" color="red">
+                    <path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" fill="currentColor"/>
+                </svg>
+            </div>
         </div>
         <div class="card">
             <h3>Isha</h3>
             <p id="isha">chargement...</p>
             <p id="isha-arabic">العشاء</p>
+            <div class="icon">
+                <svg id="icon-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20" color="red">
+                    <path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" fill="currentColor"/>
+                </svg>
+            </div>
         </div>
     </section>
 </body>

@@ -48,27 +48,29 @@ header {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-
 .search-bar {
     text-align: center;
     margin: 20px 0;
 }
 
-.search-bar input {
+.search-bar select {
     padding: 10px;
     font-size: 16px;
     border-radius: 25px;
     border: 1px solid #ddd;
     width: 70%;
     max-width: 400px;
+    background-color: #fff;
     transition: border-color 0.3s ease;
+    appearance: none; /* Pour enlever la flèche par défaut dans certains navigateurs */
+    -webkit-appearance: none; /* Safari */
+    -moz-appearance: none; /* Firefox */
 }
 
-.search-bar input:focus {
+.search-bar select:focus {
     border-color: #0057b7;
     outline: none;
 }
-
 
 button {
     padding: 10px 20px;
@@ -89,7 +91,6 @@ button:hover {
 button:active {
     background-color: #395f58;
 }
-
 
 .cards {
     display: flex;
@@ -130,6 +131,18 @@ body {
     animation: fadeIn 1.5s ease-out;
 }
 
+.icon {
+    margin-top: 5px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -139,15 +152,20 @@ body {
     }
 }
 
-
 @media (max-width: 768px) {
     .current-time {
         margin-top: 20px;
     }
 
-    .search-bar input {
-        width: 80%;
+    .search-bar select {
+        width: 80%;  /* Augmenter la largeur des select pour les petites résolutions */
         margin-bottom: 10px;
+    }
+
+    button {
+        width: 80%;  /* Le bouton devient plus large sur mobile */
+        font-size: 14px;  /* Réduire légèrement la taille du texte pour l'adaptation mobile */
+        padding: 12px;
     }
 
     .cards {
@@ -163,8 +181,13 @@ body {
 }
 
 @media (max-width: 480px) {
-    .search-bar input {
-        width: 90%;
+    .search-bar select {
+        width: 90%; /* Élément de sélection prend presque toute la largeur sur très petits écrans */
+        font-size: 14px; /* Légère réduction de la taille du texte */
+    }
+
+    .search-bar button {
+        width: 90%;  /* Le bouton prend également 90% de la largeur */
     }
 
     .cards {

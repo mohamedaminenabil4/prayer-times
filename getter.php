@@ -1,26 +1,22 @@
 <?php
     //---------------------------- SETTING API ----------------------------
-    if (isset($_GET['city']) && !empty($_GET['city'])) {
-        $city= $_GET['city'];
-        $country= "Morocco";
+    if (isset($_GET['country']) && !empty($_GET['country']) && isset($_GET['city']) && !empty($_GET['city'])) {
+        $country=  str_replace(" ","",$_GET['country']);
+        $city=  str_replace(" ","",$_GET['city']);
         $date= "today";
         $apiPrayerTimesUrl= "https://api.aladhan.com/v1/timingsByAddress/$date?address=$city&country=$country";
     } else {
-        //-------------- YOUR IP ADDRESS FOR TESTING --------------
-        $adressIp = "";
-
-        //-------------- UNCOMMENT THIS LINE IN PRODUCTION --------------
-        //$adressIp = $_SERVER['REMOTE_ADDR'];
+        $adressIp = "197.145.129.18";
         if (isset($adressIp) && !empty($adressIp)) {
-            $apiLocationUrl = "http://ip-api.com/json/$adressIp";
+            $apiLocationUrl = "http://ipinfo.io/$adressIp/json";
             $responseLocation = file_get_contents($apiLocationUrl);
             $dataLocation = json_decode($responseLocation,false);
-            $city= $dataLocation->city;
-            $country= $dataLocation->country;
+            $country= str_replace(" ","",$dataLocation->country);
+            $city= str_replace(" ","",$dataLocation->city);
             $date= "today";
             $apiPrayerTimesUrl= "https://api.aladhan.com/v1/timingsByAddress/$date?address=$city&country=$country";
         } else {
-            $city= 'Rabat';
+            $city= "Rabat";
             $country= "Morocco";
             $date= "today";
             $apiPrayerTimesUrl= "https://api.aladhan.com/v1/timingsByAddress/$date?address=$city&country=$country";
@@ -31,12 +27,24 @@
     $responsePrayerTimes = file_get_contents($apiPrayerTimesUrl);
     $dataPrayerTimes = json_decode($responsePrayerTimes,false);
 
-    echo json_encode([
-        'fajr' => $dataPrayerTimes->data->timings->Fajr,
-        'dhuhr' => $dataPrayerTimes->data->timings->Dhuhr,
-        'asr' => $dataPrayerTimes->data->timings->Asr,
-        'maghrib' => $dataPrayerTimes->data->timings->Maghrib,
-        'isha' => $dataPrayerTimes->data->timings->Isha,
-        'city' => $city,
-    ]);
+    if (isset($_GET['city'])) {
+        echo json_encode([
+            'fajr' => $dataPrayerTimes->data->timings->Fajr,
+            'dhuhr' => $dataPrayerTimes->data->timings->Dhuhr,
+            'asr' => $dataPrayerTimes->data->timings->Asr,
+            'maghrib' => $dataPrayerTimes->data->timings->Maghrib,
+            'isha' => $dataPrayerTimes->data->timings->Isha,
+            'city' => $_GET['city'],
+        ]);
+    } else {
+        echo json_encode([
+            'fajr' => $dataPrayerTimes->data->timings->Fajr,
+            'dhuhr' => $dataPrayerTimes->data->timings->Dhuhr,
+            'asr' => $dataPrayerTimes->data->timings->Asr,
+            'maghrib' => $dataPrayerTimes->data->timings->Maghrib,
+            'isha' => $dataPrayerTimes->data->timings->Isha,
+            'city' => $dataLocation->city,
+        ]);
+    }
+    
 ?>
